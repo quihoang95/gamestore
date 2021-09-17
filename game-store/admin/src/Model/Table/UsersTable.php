@@ -67,7 +67,8 @@ class UsersTable extends Table
 
         $validator
             ->integer('phone')
-            ->allowEmptyString('phone');
+            ->allowEmptyString('phone')
+            ->minLength('phone', 10);
 
         $validator
             ->scalar('password')

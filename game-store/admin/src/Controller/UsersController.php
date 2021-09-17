@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Auth\DefaultPasswordHasher;
 use Cake\ORM\TableRegistry;
 
 /**
@@ -20,7 +21,8 @@ class UsersController extends AppController
     public function index()
     {
         $users = TableRegistry::get('users');
-        $query = $users->find();
+        $query = $users->find()->all();
+        // dd($query);
         $this->set('users',$query);
      
     }
@@ -51,6 +53,8 @@ class UsersController extends AppController
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+            $hashPswdObj = new DefaultPasswordHasher();
+            $user->password  = $hashPswdObj->hash($this->request->getData('password'));
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
@@ -70,9 +74,11 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
+        
         $user = $this->Users->get($id, [
             'contain' => [],
         ]);
+    
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
@@ -104,4 +110,24 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function login() 
+   {
+         if($this->request->is("post")) {
+            $userdata = $this->Auth->identify();
+            dd($userdata);
+            if($userdata) {
+               $this->Auth->setUser($userdata);
+               return $this->redirect($this->Auth->redirectUrl());
+            }else {
+               $this->Flash->error("Invalid login");
+            }
+         }
+      $this->set("title","Site Title | Login");     
+   }
+
+   public function logout()
+   {
+      return $this->redirect($this->Auth->logout());
+   }
 }

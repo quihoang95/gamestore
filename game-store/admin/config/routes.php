@@ -21,6 +21,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
+use Cake\Http\Middleware\CsrfProtectionMiddleware;
 use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
 
@@ -45,18 +46,22 @@ use Cake\Routing\RouteBuilder;
 $routes->setRouteClass(DashedRoute::class);
 
 $routes->scope('/', function (RouteBuilder $builder) {
+  
     /*
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, templates/Pages/home.php)...
      */
-    $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
-    $builder->connect('/login', ['controller' => 'Auths', 'action' => 'login', 'login']);
+    $builder->connect('/', ['controller' => 'Pages', 'action' => 'display']);
+    $builder->connect('/login', ['controller' => 'Users', 'action' => 'login']);
+    $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
 
     //Admin
 
     $builder->connect('/users',['controller' => 'Users', 'action' => 'index', 'index']);
-    $builder->connect('users/add', ['controller' => 'Users', 'acction' => 'add', 'add']);
+    $builder->connect('/users/add', ['controller' => 'Users', 'action' => 'add']);
+    $builder->connect('/users/edit/:id', ['controller' => 'Users', 'action' => 'edit'], ['pass' => ["id"]]);
+    $builder->connect('/users/delete/:id', ['controller' => 'Users', 'action' => 'delete'], ['pass' => ["id"]]);
 
     /*
      * ...and connect the rest of 'Pages' controller's URLs.
