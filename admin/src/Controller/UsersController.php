@@ -13,6 +13,19 @@ use Cake\ORM\TableRegistry;
  */
 class UsersController extends AppController
 {
+    public function login() 
+    { 
+          if($this->request->is("post")) {
+             $userdata = $this->Auth->identify();
+             if($userdata) {
+                $this->Auth->setUser($userdata);
+                return $this->redirect(['controller'=>'Users', 'action' =>' index']);
+             }else {
+                $this->Flash->error("Invalid login");
+             }
+          }
+       $this->set("title","Site Title | Login");     
+    }
     /**
      * Index method
      *
@@ -20,10 +33,8 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $users = TableRegistry::get('users');
-        $query = $users->find()->all();
-        // dd($query);
-        $this->set('users',$query);
+        $users = $this->paginate($this->Users);
+        $this->set(compact('users'));
      
     }
 
@@ -62,6 +73,7 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
+        $this->set('title',"Add user");
         $this->set(compact('user'));
     }
 
@@ -111,20 +123,7 @@ class UsersController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function login() 
-   {
-         if($this->request->is("post")) {
-            $userdata = $this->Auth->identify();
-            dd($userdata);
-            if($userdata) {
-               $this->Auth->setUser($userdata);
-               return $this->redirect($this->Auth->redirectUrl());
-            }else {
-               $this->Flash->error("Invalid login");
-            }
-         }
-      $this->set("title","Site Title | Login");     
-   }
+  
 
    public function logout()
    {

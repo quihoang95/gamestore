@@ -1,44 +1,50 @@
-<!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-    <div class="card">
-              <div class="card-header">
-                <a href="<?= $this->Url->build('/users/add', ['fullBase' => true]) ?>" class="btn btn-primary float-right">Add</a>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th>STT</th>
-                    <th>Name</th>
-                    <th>Email(s)</th>
-                    <th>Phone number</th>
-                    <th></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <?php 
-                  foreach ($users as $key => $user) {?>     
-                  <tr>
-                    <td><?= $key+1 ?></td>
-                    <td><?= $user->name?></td>
-                    <td><?= $user->email?></td>
-                    <td><?= $user->phone?></td>
-                    <td> 
-                    <!-- <form id="frm-delete-student-<?= $user->id ?>" action="<?= $this->Url->build('/users/delete/' . $user->id, ['fullBase' => false]) ?>" method="post"><input type="hidden" value="<?= $user->id ?>" name="id" /></form> -->
-                      <a href="<?= $this->Url->build('/users/edit/' . $user->id, ['fullBase' => true]) ?>" class="btn btn-warning">Edit</a>
-                      <!-- <a href="javascript:void(0)" onclick="if(confirm('Are you sure want to delete ?')){ $('#frm-delete-student-<?= $user->id ?>').submit() }" class="btn btn-danger">Delete</a> -->
+<?php
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
+ */
+?>
+<div class="users index content">
+    <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <h3><?= __('Users') ?></h3>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th><?= $this->Paginator->sort('id') ?></th>
+                    <th><?= $this->Paginator->sort('name') ?></th>
+                    <th><?= $this->Paginator->sort('email') ?></th>
+                    <th><?= $this->Paginator->sort('phone') ?></th>
+                    <th><?= $this->Paginator->sort('username') ?></th>
+                    <th class="actions"><?= __('Actions') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($users as $user): ?>
+                <tr>
+                    <td><?= $this->Number->format($user->id) ?></td>
+                    <td><?= h($user->name) ?></td>
+                    <td><?= h($user->email) ?></td>
+                    <td><?= h($user->phone) ?></td>
+                    <td><?= h($user->username) ?></td>
+                    <td class="actions">
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
                     </td>
-                  </tr>
-                  <?php 
-                             
-                      }?>
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
+    <div class="paginator">
+        <ul class="pagination">
+            <?= $this->Paginator->first('<< ' . __('first')) ?>
+            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->numbers() ?>
+            <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?= $this->Paginator->last(__('last') . ' >>') ?>
+        </ul>
+        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
-    <!-- /.container-fluid -->
-  </section>
+</div>

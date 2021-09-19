@@ -1,37 +1,36 @@
-
-  <!-- Main content -->
-  <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Add User</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <?= $this->Form->create($user, [
-                "id" => "frm-add-branch"
-                ]) ?>
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Name</label>
-                    <input type="text" value="<?= $user->name ?>" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter your name">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Email</label>
-                    <input type="email" value="<?= $user->email ?>" name="email" class="form-control" id="exampleInputPassword1" placeholder="Enter your email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Phone</label>
-                    <input type="text" value="<?= $user->phone ?>" name="phone" class="form-control" id="exampleInputPassword1" placeholder="Enter your phone number">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" value="<?= $user->password ?>" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-       
-                </div>
-                <!-- /.card-body -->
-
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-                <?= $this->Form->end() ?>
-            </div>
+<?php
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\User $user
+ */
+?>
+<div class="row">
+    <aside class="column">
+        <div class="side-nav">
+            <h4 class="heading"><?= __('Actions') ?></h4>
+            <?= $this->Form->postLink(
+                __('Delete'),
+                ['action' => 'delete', $user->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']
+            ) ?>
+            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+        </div>
+    </aside>
+    <div class="column-responsive column-80">
+        <div class="users form content">
+            <?= $this->Form->create($user) ?>
+            <fieldset>
+                <legend><?= __('Edit User') ?></legend>
+                <?php
+                    echo $this->Form->control('name');
+                    echo $this->Form->control('email');
+                    echo $this->Form->control('phone');
+                    echo $this->Form->control('password');
+                    echo $this->Form->control('username');
+                ?>
+            </fieldset>
+            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->end() ?>
+        </div>
+    </div>
+</div>

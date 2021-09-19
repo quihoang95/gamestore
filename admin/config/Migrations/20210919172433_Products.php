@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
-class Users extends AbstractMigration
+class Products extends AbstractMigration
 {
     /**
      * Change Method.
@@ -14,32 +14,27 @@ class Users extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('users');
+        $table = $this->table('products');
         $table->addColumn('name', 'string', [
-            'default' => 'null',
-            'limit' => 255,
+            'limit' => 100,
             'null' => false,
         ]);
-        $table->addColumn('email', 'string', [
-            'default' => 'null',
-            'limit' => 255,
+        $table->addColumn('price', 'string', [
+            'limit' => 100,
             'null' => false,
         ]);
-        $table->addColumn('phone', 'string', [
-            'default' => 'null',
-            'limit' => 30,
+        $table->addColumn('categoryId', 'integer', [
             'null' => false,
         ]);
-        $table->addColumn('password', 'string', [
-            'default' => 'null',
-            'limit' => 255,
+        $table->addColumn('description', 'string', [
+            'limit' => 150,
             'null' => false,
         ]);
-        $table->addColumn('username', 'string', [
-            'default' => 'null',
-            'limit' => 80,
+        $table->addColumn('point', 'integer', [
+            'limit' => 100,
             'null' => false,
         ]);
         $table->create();
     }
+    
 }
