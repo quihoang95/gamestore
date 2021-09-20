@@ -17,7 +17,7 @@ class Roles extends AbstractMigration
         $table = $this->table('roles');
         $table->addColumn('name', 'string', [
             'default' => 'null',
-            'limit' => 255,
+            'limit' => 50,
             'null' => false,
         ]);
         $table->create();

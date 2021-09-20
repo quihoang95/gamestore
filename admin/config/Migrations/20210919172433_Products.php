@@ -34,6 +34,17 @@ class Products extends AbstractMigration
             'limit' => 100,
             'null' => false,
         ]);
+        $table->addColumn('create_at', 'datetime', [
+            'default' => 'CURRENT_TIMESTAMP',
+            'null' => true,
+        ]);
+        $table->addColumn('update_at', 'datetime', [
+            'default' => 'CURRENT_TIMESTAMP',
+            'null' => true,
+        ]);
+        $table->addColumn('del_flag', 'boolean', [
+            'null' => true,
+        ]);
         $table->create();
     }
     

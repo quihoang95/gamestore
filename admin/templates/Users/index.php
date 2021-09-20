@@ -11,22 +11,28 @@
         <table>
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
+                    <th><?= $this->Paginator->sort('No') ?></th>
                     <th><?= $this->Paginator->sort('name') ?></th>
+                    <th><?= $this->Paginator->sort('birthday') ?></th>
                     <th><?= $this->Paginator->sort('email') ?></th>
                     <th><?= $this->Paginator->sort('phone') ?></th>
+                    <th><?= $this->Paginator->sort('address') ?></th>
                     <th><?= $this->Paginator->sort('username') ?></th>
+                    <th><?= $this->Paginator->sort('role') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($users as $user): ?>
+                <?php foreach ($users as $key=> $user): ?>
                 <tr>
-                    <td><?= $this->Number->format($user->id) ?></td>
+                    <td><?=  $key+1 ?></td>
                     <td><?= h($user->name) ?></td>
+                    <td><?= h($user->birthday) ?></td>
                     <td><?= h($user->email) ?></td>
                     <td><?= h($user->phone) ?></td>
+                    <td><?= h($user->address) ?></td>
                     <td><?= h($user->username) ?></td>
+                    <td><?= h($user->role->name) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
@@ -40,9 +46,9 @@
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->prev('< ' . __('Previous')) ?>
             <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?= $this->Paginator->next(__('Next') . ' >') ?>
             <?= $this->Paginator->last(__('last') . ' >>') ?>
         </ul>
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>

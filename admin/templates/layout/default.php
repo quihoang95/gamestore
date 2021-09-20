@@ -28,6 +28,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->meta('icon') ?>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
     <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake']) ?>
 
@@ -41,16 +42,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
         </div>
         <div class="top-nav-links">
-            <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Documentation</a>
-            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
+            <a href="<?= $this->Url->build('/users') ?>">Users</a>
+            <a href="<?= $this->Url->build('/products') ?>">Products</a>
+            <a href="<?= $this->Url->build('/categories') ?>">Categories</a>
+            <a href="<?= $this->Url->build('/images') ?>">Images</a>
+            <a href="<?= $this->Url->build('/roles') ?>">Roles</a>
+            <a href="<?= $this->Url->build('/logout') ?>">Log out</a>
         </div>
     </nav>
+    
     <main class="main">
         <div class="container">
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
         </div>
+       
     </main>
+    
     <footer >
  
     </footer>

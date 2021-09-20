@@ -42,6 +42,22 @@
                     <th><?= __('Point') ?></th>
                     <td><?= $this->Number->format($product->point) ?></td>
                 </tr>
+                <tr>
+                    <th><?= __('ImageId') ?></th>
+                    <td><?= $this->Number->format($product->imageId) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Del Flag') ?></th>
+                    <td><?= $this->Number->format($product->del_flag) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Create At') ?></th>
+                    <td><?= h($product->create_at) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Update At') ?></th>
+                    <td><?= h($product->update_at) ?></td>
+                </tr>
             </table>
         </div>
     </div>

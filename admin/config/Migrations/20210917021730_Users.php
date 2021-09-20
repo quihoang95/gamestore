@@ -16,30 +16,52 @@ class Users extends AbstractMigration
     {
         $table = $this->table('users');
         $table->addColumn('name', 'string', [
-            'default' => 'null',
-            'limit' => 255,
+            'limit' => 50,
+            'null' => false,
+        ]);
+        $table->addColumn('birthday', 'date', [
             'null' => false,
         ]);
         $table->addColumn('email', 'string', [
-            'default' => 'null',
-            'limit' => 255,
+            'limit' => 100,
             'null' => false,
         ]);
         $table->addColumn('phone', 'string', [
-            'default' => 'null',
-            'limit' => 30,
+            'limit' => 15,
             'null' => false,
         ]);
-        $table->addColumn('password', 'string', [
-            'default' => 'null',
+        $table->addColumn('address', 'string', [
             'limit' => 255,
             'null' => false,
         ]);
         $table->addColumn('username', 'string', [
-            'default' => 'null',
             'limit' => 80,
             'null' => false,
         ]);
+        $table->addColumn('password', 'string', [
+            'limit' => 255,
+            'null' => false,
+        ]);
+        $table->addColumn('roleId', 'integer', [
+            'null' => false,
+        ]);
+        $table->addColumn('point', 'integer', [
+            'default' => 0,
+            'null' => true,
+        ]);
+        $table->addColumn('create_at', 'datetime', [
+            'default' => 'CURRENT_TIMESTAMP',
+            'null' => true,
+        ]);
+        $table->addColumn('update_at', 'datetime', [
+            'default' => 'CURRENT_TIMESTAMP',
+            'null' => true,
+        ]);
+        $table->addColumn('del_flag', 'boolean', [
+            'null' => true,
+        ]);
+        
+
         $table->create();
     }
 }

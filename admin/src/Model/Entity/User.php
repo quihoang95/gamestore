@@ -10,10 +10,17 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $name
+ * @property \Cake\I18n\FrozenDate $birthday
  * @property string $email
  * @property string $phone
- * @property string $password
+ * @property string $address
  * @property string $username
+ * @property string $password
+ * @property int $roleId
+ * @property int $point
+ * @property \Cake\I18n\FrozenDate|null $create_at
+ * @property \Cake\I18n\FrozenDate|null $update_at
+ * @property int|null $del_flag
  */
 class User extends Entity
 {
@@ -28,10 +35,17 @@ class User extends Entity
      */
     protected $_accessible = [
         'name' => true,
+        'birthday' => true,
         'email' => true,
         'phone' => true,
-        'password' => true,
+        'address' => true,
         'username' => true,
+        'password' => true,
+        'roleId' => true,
+        'point' => true,
+        'create_at' => true,
+        'update_at' => true,
+        'del_flag' => true,
     ];
 
     /**

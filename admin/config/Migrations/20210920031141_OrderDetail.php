@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
-class Categories extends AbstractMigration
+class OrderDetail extends AbstractMigration
 {
     /**
      * Change Method.
@@ -14,10 +14,11 @@ class Categories extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('categories');
-        $table->addColumn('name', 'string', [
-            'default' => 'null',
-            'limit' => 100,
+        $table = $this->table('orderDetail');
+        $table->addColumn('productId', 'integer', [
+            'null' => false,
+        ]);
+        $table->addColumn('orderId', 'integer', [
             'null' => false,
         ]);
         $table->addColumn('create_at', 'datetime', [

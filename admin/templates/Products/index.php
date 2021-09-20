@@ -14,21 +14,26 @@
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('name') ?></th>
                     <th><?= $this->Paginator->sort('price') ?></th>
-                    <th><?= $this->Paginator->sort('categoryId') ?></th>
+                    <th><?= $this->Paginator->sort('category') ?></th>
                     <th><?= $this->Paginator->sort('description') ?></th>
                     <th><?= $this->Paginator->sort('point') ?></th>
+                    <th><?= $this->Paginator->sort('create_at') ?></th>
+                    <th><?= $this->Paginator->sort('update_at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($products as $product): ?>
+                <?php foreach ($products as $key=>$product): ?>
                 <tr>
-                    <td><?= $this->Number->format($product->id) ?></td>
+                    <td><?= $key+1 ?></td>
                     <td><?= h($product->name) ?></td>
                     <td><?= h($product->price) ?></td>
-                    <td><?= $this->Number->format($product->categoryId) ?></td>
+                    <td><?= h($product->category->name) ?></td>
                     <td><?= h($product->description) ?></td>
                     <td><?= $this->Number->format($product->point) ?></td>
+                    <td><?= h($product->create_at) ?></td>
+                    <td><?= h($product->update_at) ?></td>
+
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $product->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $product->id]) ?>

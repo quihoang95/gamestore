@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
-class Categories extends AbstractMigration
+class Images extends AbstractMigration
 {
     /**
      * Change Method.
@@ -14,12 +14,14 @@ class Categories extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('categories');
-        $table->addColumn('name', 'string', [
-            'default' => 'null',
-            'limit' => 100,
+        $table = $this->table('images');
+        $table->addColumn('productId', 'integer', [
             'null' => false,
         ]);
+        $table->addColumn('image', 'string', [
+            'null' => false,
+        ]);
+
         $table->addColumn('create_at', 'datetime', [
             'default' => 'CURRENT_TIMESTAMP',
             'null' => true,
@@ -28,9 +30,9 @@ class Categories extends AbstractMigration
             'default' => 'CURRENT_TIMESTAMP',
             'null' => true,
         ]);
-        $table->addColumn('del_flag', 'boolean', [
+        $table->addColumn('del_flag', 'integer', [
             'null' => true,
         ]);
-        $table->create();
+        $table->create();  
     }
 }

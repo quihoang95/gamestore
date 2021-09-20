@@ -40,6 +40,8 @@ class UsersTable extends Table
         $this->setTable('users');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
+        $this->belongsTo('Roles')
+        ->setForeignKey('roleId');
     }
 
     /**
@@ -56,27 +58,64 @@ class UsersTable extends Table
 
         $validator
             ->scalar('name')
-            ->maxLength('name', 255)
+            ->maxLength('name', 50)
+            ->requirePresence('name', 'create')
             ->notEmptyString('name');
 
         $validator
+            ->date('birthday')
+            ->requirePresence('birthday', 'create')
+            ->notEmptyDate('birthday');
+
+        $validator
             ->email('email')
+            ->requirePresence('email', 'create')
             ->notEmptyString('email');
 
         $validator
             ->scalar('phone')
             ->maxLength('phone', 30)
+            ->requirePresence('phone', 'create')
             ->notEmptyString('phone');
 
         $validator
-            ->scalar('password')
-            ->maxLength('password', 255)
-            ->notEmptyString('password');
+            ->scalar('address')
+            ->maxLength('address', 100)
+            ->requirePresence('address', 'create')
+            ->notEmptyString('address');
 
         $validator
             ->scalar('username')
             ->maxLength('username', 80)
+            ->requirePresence('username', 'create')
             ->notEmptyString('username');
+
+        $validator
+            ->scalar('password')
+            ->maxLength('password', 255)
+            ->requirePresence('password', 'create')
+            ->notEmptyString('password');
+
+        $validator
+            ->integer('roleId')
+            ->requirePresence('roleId', 'create')
+            ->notEmptyString('roleId');
+
+        $validator
+            ->integer('point')
+            ->notEmptyString('point');
+
+        $validator
+            ->date('create_at')
+            ->allowEmptyDate('create_at');
+
+        $validator
+            ->date('update_at')
+            ->allowEmptyDate('update_at');
+
+        $validator
+            ->integer('del_flag')
+            ->allowEmptyString('del_flag');
 
         return $validator;
     }

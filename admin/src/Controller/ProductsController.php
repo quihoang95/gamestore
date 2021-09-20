@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Datasource\ConnectionManager;
+use Cake\ORM\TableRegistry;
+
 /**
  * Products Controller
  *
@@ -18,8 +21,10 @@ class ProductsController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Categories']
+        ];
         $products = $this->paginate($this->Products);
-
         $this->set(compact('products'));
     }
 
@@ -56,7 +61,10 @@ class ProductsController extends AppController
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
-        $this->set(compact('product'));
+        $categories = TableRegistry::getTableLocator()->get('Categories')->find()->all();
+        
+        $this->set(compact('product','categories'));
+       
     }
 
     /**
@@ -80,7 +88,8 @@ class ProductsController extends AppController
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
-        $this->set(compact('product'));
+        $categories = TableRegistry::getTableLocator()->get('Categories')->find()->all();
+        $this->set(compact('product','categories'));
     }
 
     /**

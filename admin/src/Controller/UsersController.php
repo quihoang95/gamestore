@@ -33,6 +33,9 @@ class UsersController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Roles']
+        ];
         $users = $this->paginate($this->Users);
         $this->set(compact('users'));
      
@@ -66,6 +69,7 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->getData());
             $hashPswdObj = new DefaultPasswordHasher();
             $user->password  = $hashPswdObj->hash($this->request->getData('password'));
+            // dd($user);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
@@ -73,8 +77,9 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
+        $roles = TableRegistry::getTableLocator()->get('Roles')->find()->all();
         $this->set('title',"Add user");
-        $this->set(compact('user'));
+        $this->set(compact('user','roles'));
     }
 
     /**

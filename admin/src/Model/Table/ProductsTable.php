@@ -40,6 +40,9 @@ class ProductsTable extends Table
         $this->setTable('products');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
+
+        $this->belongsTo('Categories')
+        ->setForeignKey('categoryId');
     }
 
     /**
@@ -81,7 +84,21 @@ class ProductsTable extends Table
             ->integer('point')
             ->requirePresence('point', 'create')
             ->notEmptyString('point');
+            
+        $validator
+            ->date('create_at')
+            ->allowEmptyDate('create_at');
+
+        $validator
+            ->date('update_at')
+            ->allowEmptyDate('update_at');
+
+        $validator
+            ->integer('del_flag')
+            ->allowEmptyString('del_flag');
 
         return $validator;
     }
+
+
 }
