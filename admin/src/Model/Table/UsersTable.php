@@ -134,4 +134,15 @@ class UsersTable extends Table
 
         return $rules;
     }
+
+    var $name = "Users";
+    public function checkLogin($username, $password){
+        $sql = "Select username,password from users where username = $username and password = $password";
+        $this->query($sql);
+        if($this->getNumRows()==0){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
