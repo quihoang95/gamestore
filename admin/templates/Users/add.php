@@ -51,10 +51,6 @@
                     <?php }?>
                 </select>
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Point:</label>
-                <input name="point" type="text" class="form-control" style="font-size: 20px;">
-            </div>
            
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>

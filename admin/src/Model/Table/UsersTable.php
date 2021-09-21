@@ -102,10 +102,6 @@ class UsersTable extends Table
             ->notEmptyString('roleId');
 
         $validator
-            ->integer('point')
-            ->notEmptyString('point');
-
-        $validator
             ->date('create_at')
             ->allowEmptyDate('create_at');
 

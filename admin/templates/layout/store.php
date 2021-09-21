@@ -75,7 +75,9 @@ $cakeDescription = "Future's Store";
 </head>
 <body>
     <header>
+        <?php if($this->Url->build('/Stores')){?>
     <?= $this->element('header')?>
+    <?php }?>
     </header>
     <main class="main">
         <div class="container">
@@ -95,5 +97,6 @@ $cakeDescription = "Future's Store";
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/custom.js"></script>
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <!-- slide -->
 </body>
 </html>
