@@ -10,29 +10,30 @@
             </div>
             <div class="row">
                 <div class="col-md-12 margin_bottom">
-                    <div class="row">
-
+                <?php foreach ($products as $product):
+                    ?>
+                    <div class="row pt-5">
+                   
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                             <div class="two-box">
-                                <figure><img src="img/our-image1.jpg" alt="#" /></figure>
+                                
+                                <figure><?= $this->Html->image($product['image'], ['style'=>'width:360px;']) ?></figure>
+                               
                             </div>
                         </div>
 
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-                            <?php foreach ($products as $key=> $product): ?>
+                            
                             <div class="Games">
-                                <h3><?= h($product->name)?></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                                <a href="#">Free Download</a>
+                                <h3><?= h($product['name'])?></h3>
+                                <p><?= h($product['description'])?></p>
+                                <a href="#">View Detail</a>
                             </div>
-                            <!-- <div class="Games">
-                                <h3></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                                <a href="#">Free Download</a>
-                            </div> -->
-                            <?php endforeach;?>
+                          
                         </div>
+                    
                     </div>
+                    <?php endforeach;?>
                 </div>
             </div>
         </div>
@@ -55,7 +56,7 @@
                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                      <div class="box_bg">
                          <div class="box_bg_img">
-                             <figure><img src="img/soft.jpg"></figure>
+                             <figure><?=  $this->Html->image('soft.jpg', ['alt' => 'soft']);?></figure>
                          </div>
                      </div>
                  </div>
@@ -83,7 +84,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="about-box">
-                        <figure><img src="img/about.jpg" alt="#" /></figure>
+                        <figure><?=  $this->Html->image('about.jpg', ['alt' => 'about']);?></figure>
 
                         <p> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             <br> labore et dolore magna aliqua. Ut enim conseq</p>
@@ -110,17 +111,17 @@
                     <div class="row box">
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
                             <div class="testimonial_box">
-                                <figure><img src="img/test1.png" alt="#" /></figure>
+                                <figure><?=  $this->Html->image('test1.png', ['alt' => 'about']);?></figure>
                             </div>
                         </div>
                         <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
                             <div class="testimonial_box">
-                                <figure><img src="img/test2.png" alt="#" /></figure>
+                                <figure><?=  $this->Html->image('test2.png', ['alt' => 'about']);?></figure>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
                             <div class="testimonial_box">
-                                <figure><img src="img/test3.png" alt="#" /></figure>
+                                <figure><?=  $this->Html->image('test3.png', ['alt' => 'about']);?></figure>
                             </div>
                         </div>
                     </div>

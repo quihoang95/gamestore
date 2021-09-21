@@ -25,8 +25,8 @@
                 <tr>
                     <td><?= $key +1 ?></td>
                     <td><?= h($image->name) ?></td>
-                    <td><?= $this->Html->image($image->image) ?></td>
-                    <td><?= @$this->Number->format($image->productId) ?></td>
+                    <td><?= @$this->Html->image($image->image) ?></td>
+                    <td><?= $this->Number->format($image->productId) ?></td>
                     <td><?= h($image->create_at) ?></td>
                     <td><?= h($image->update_at) ?></td>
                     <td class="actions">

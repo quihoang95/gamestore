@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use Cake\Datasource\ConnectionManager;
 use Cake\ORM\TableRegistry;
+use Cake\Event\EventInterface;
 
 /**
  * Stores Controller
@@ -13,14 +14,19 @@ use Cake\ORM\TableRegistry;
  */
 class StoresController extends AppController
 {
-  public function index() 
+  public function beforeFilter(EventInterface $event)
   {
-    $conn = ConnectionManager::get('default');
-    // dd($conn);
-    $statement = $conn->execute('SELECT * from products inner join images');
-    $products = $statement->fetch('assoc');
-    // dd($products);
-    $this->set(compact('products'));
-    $this->viewBuilder()->setLayout('store');   
+    $this->loadComponent('Stores');
   }
+
+  public function index(){
+    $products = $this->{'Stores'}->getAllProd();
+    $this->set(compact('products'));
+    $this->viewBuilder()->setLayout('store'); 
+  }
+
+  public function detail(){
+    $this->viewBuilder()->setLayout('detailStore'); 
+  }
+  
 }

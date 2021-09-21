@@ -7,17 +7,18 @@
                         <div class="full">
                             <div class="center-desk">
                                 <div class="logo">
-                                    <a href="index.html"><img src="img/logo.png" alt="#" /></a>
+                                    <a href="index.html"><?= $this->Html->image('logo.png', ['alt' => 'logo']); ?></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+
                         <ul class="top_icon">
                             <li class="button_login"> <a href="#">Login</a> </li>
                             <li> <a href="#about">Signup</a> </li>
                             <li class="mean-last">
-                                <a href="#"><img src="img/search_icon.png" alt="#" /></a>
+                                <a href="#"><?= $this->Html->image('search_icon.png', ['alt' => 'search']); ?></a>
                             </li>
                         </ul>
                     </div>
@@ -25,6 +26,7 @@
             </div>
         </div>
         <!-- end header inner -->
+
         <!-- end header -->
         <section class="slider_section" style="background-color: #000;">
             <div class="banner_main">
@@ -32,19 +34,19 @@
                     <div class="row">
                         <div class="col-md-2 padding_left0">
                             <div class="menu-area">
-                            <div class="limit-box">
-                                <nav class="main-menu">
-                                    <ul class="menu-area-main">
-                                        <li class="active"> <a href="#game">Game</a> </li>
-                                        <li> <a href="#software">Software</a> </li>
-                                        <li> <a href="#about">About</a> </li>
-                                        <li> <a href="#testimonial">Testimonial</a> </li>
-                                        <li> <a href="#contact">Contact</a> </li>
-                                        
-                                    </ul>
-                                </nav>
+                                <div class="limit-box">
+                                    <nav class="main-menu">
+                                        <ul class="menu-area-main">
+                                            <li class="active"> <a href="#game">Game</a> </li>
+                                            <li> <a href="#software">Software</a> </li>
+                                            <li> <a href="#about">About</a> </li>
+                                            <li> <a href="#testimonial">Testimonial</a> </li>
+                                            <li> <a href="#contact">Contact</a> </li>
+
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
-                        </div>
                         </div>
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 ">
                             <div class="text-bg">
@@ -53,9 +55,9 @@
                                 <a href="#">download</a>
                             </div>
                         </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 ">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 ">
                             <div class="text-img">
-                                <figure><img src="img/img.png" alt="#"/></figure>
+                                <figure><?= $this->Html->image('img.png', ['alt' => 'img']); ?></figure>
                             </div>
                         </div>
 
@@ -63,6 +65,6 @@
                     </div>
                 </div>
             </div>
-    
+
         </section>
     </div>

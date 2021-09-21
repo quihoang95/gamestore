@@ -26,8 +26,7 @@ class Products extends AbstractMigration
         $table->addColumn('categoryId', 'integer', [
             'null' => false,
         ]);
-        $table->addColumn('description', 'string', [
-            'limit' => 150,
+        $table->addColumn('description', 'text', [
             'null' => false,
         ]);
         $table->addColumn('point', 'integer', [

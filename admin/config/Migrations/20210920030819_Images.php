@@ -21,7 +21,10 @@ class Images extends AbstractMigration
         $table->addColumn('image', 'string', [
             'null' => false,
         ]);
-
+        $table->addColumn('status', 'integer',[
+            'default' => 0,
+            'null' => true,
+        ]);
         $table->addColumn('create_at', 'datetime', [
             'default' => 'CURRENT_TIMESTAMP',
             'null' => true,

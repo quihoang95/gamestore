@@ -54,6 +54,7 @@ class ProductsController extends AppController
         $product = $this->Products->newEmptyEntity();
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
+            // dd($product);
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
 

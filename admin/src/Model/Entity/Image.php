@@ -29,6 +29,7 @@ class Image extends Entity
     protected $_accessible = [
         'name' => true,
         'productId' => true,
+        'status' => true,
         'create_at' => true,
         'update_at' => true,
         'del_flag' => true,

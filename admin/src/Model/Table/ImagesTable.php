@@ -68,12 +68,6 @@ class ImagesTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
-            ->scalar('name')
-            ->maxLength('name', 100)
-            ->requirePresence('name', 'create')
-            ->notEmptyString('name');
-
-        $validator
             ->integer('productId')
             ->requirePresence('productId', 'create')
             ->notEmptyString('productId');
