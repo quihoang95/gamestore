@@ -23,8 +23,6 @@
                 <legend><?= __('Edit Category') ?></legend>
                 <?php
                     echo $this->Form->control('name');
-                    echo $this->Form->control('create_at', ['empty' => true]);
-                    echo $this->Form->control('update_at', ['empty' => true]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

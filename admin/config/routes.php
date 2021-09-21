@@ -52,7 +52,7 @@ $routes->scope('/', function (RouteBuilder $builder) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, templates/Pages/home.php)...
      */
-    $builder->connect('/', ['controller' => 'Pages', 'action' => 'display']);
+    $builder->connect('/', ['controller' => 'Stores', 'action' => 'display']);
     $builder->connect('/login', ['controller' => 'Users', 'action' => 'login']);
     $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
 
@@ -62,6 +62,10 @@ $routes->scope('/', function (RouteBuilder $builder) {
     $builder->connect('/users/add', ['controller' => 'Users', 'action' => 'add']);
     $builder->connect('/users/edit/:id', ['controller' => 'Users', 'action' => 'edit'], ['pass' => ["id"]]);
     $builder->connect('/users/delete/:id', ['controller' => 'Users', 'action' => 'delete'], ['pass' => ["id"]]);
+
+    //Store
+    $builder->connect('/stores', ['controller' => 'Stores', 'action' => 'index']);
+    $builder->connect('/stores/detail/:id',['controller' => 'Stores', 'action' =>'view'], ['pass'=> ["id"]]);
 
     /*
      * ...and connect the rest of 'Pages' controller's URLs.

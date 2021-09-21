@@ -98,6 +98,7 @@ class UsersController extends AppController
     
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+            $user['update_at'] = date('Y-m-d H:i:s');
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 

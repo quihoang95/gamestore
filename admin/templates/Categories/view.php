@@ -26,18 +26,6 @@
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($category->id) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Del Flag') ?></th>
-                    <td><?= $this->Number->format($category->del_flag) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Create At') ?></th>
-                    <td><?= h($category->create_at) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Update At') ?></th>
-                    <td><?= h($category->update_at) ?></td>
-                </tr>
             </table>
         </div>
     </div>

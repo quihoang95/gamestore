@@ -17,8 +17,6 @@
                     <th><?= $this->Paginator->sort('category') ?></th>
                     <th><?= $this->Paginator->sort('description') ?></th>
                     <th><?= $this->Paginator->sort('point') ?></th>
-                    <th><?= $this->Paginator->sort('create_at') ?></th>
-                    <th><?= $this->Paginator->sort('update_at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -31,8 +29,6 @@
                     <td><?= h($product->category->name) ?></td>
                     <td><?= h($product->description) ?></td>
                     <td><?= $this->Number->format($product->point) ?></td>
-                    <td><?= h($product->create_at) ?></td>
-                    <td><?= h($product->update_at) ?></td>
 
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $product->id]) ?>

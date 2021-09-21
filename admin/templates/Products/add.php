@@ -38,18 +38,6 @@
                 <label for="exampleFormControlInput1" class="form-label">Point:</label>
                 <input name="point" type="number" class="form-control" style="font-size: 20px;">
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Image:</label>
-                <input name="image" type="text" class="form-control" style="font-size: 20px;">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Create at:</label>
-                <input name="create_at" type="date" class="form-control" style="font-size: 20px;">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Update at:</label>
-                <input name="update_at" type="date" class="form-control" style="font-size: 20px;">
-            </div>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
         </div>

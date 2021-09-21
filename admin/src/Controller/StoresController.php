@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Datasource\ConnectionManager;
+use Cake\ORM\TableRegistry;
+
 /**
  * Stores Controller
  *
@@ -10,8 +13,14 @@ namespace App\Controller;
  */
 class StoresController extends AppController
 {
-  public function home() 
+  public function index() 
   {
+    $conn = ConnectionManager::get('default');
+    // dd($conn);
+    $statement = $conn->execute('SELECT * from products inner join images');
+    $products = $statement->fetch('assoc');
+    // dd($products);
+    $this->set(compact('products'));
     $this->viewBuilder()->setLayout('store');   
   }
 }

@@ -49,6 +49,7 @@ class RolesController extends AppController
         $role = $this->Roles->newEmptyEntity();
         if ($this->request->is('post')) {
             $role = $this->Roles->patchEntity($role, $this->request->getData());
+            $role['update_at'] = date('Y-m-d H:i:s');
             if ($this->Roles->save($role)) {
                 $this->Flash->success(__('The role has been saved.'));
 
