@@ -65,7 +65,14 @@ $routes->scope('/', function (RouteBuilder $builder) {
 
     //Store
     $builder->connect('/stores', ['controller' => 'Stores', 'action' => 'index']);
-    $builder->connect('/stores/detail',['controller' => 'Stores', 'action' =>'detailProduct']);
+    $builder->connect('/stores/detail',['controller' => 'Stores', 'action' =>'detail']);
+    $builder->connect('/stores/cart',['controller' => 'Carts', 'action' =>'add']);
+    $builder->connect('/stores/confirm',['controller' => 'Stores', 'action' =>'confirm']);
+    $builder->connect('/stores/category',['controller' => 'Stores', 'action' =>'getProdByCate']);
+
+
+
+
 
     /*
      * ...and connect the rest of 'Pages' controller's URLs.

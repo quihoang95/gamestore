@@ -20,10 +20,6 @@
         <div class="products form content">
             <?= $this->Form->create([$image, $products],['type'=>'file']) ?>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Name:</label>
-                <input name="name" type="text" class="form-control" style="font-size: 20px;">
-            </div>
-            <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Image:</label>
                 <input name="image" type="file" class="form-control" style="font-size: 20px;">
             </div>

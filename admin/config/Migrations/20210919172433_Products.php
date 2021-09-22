@@ -33,6 +33,10 @@ class Products extends AbstractMigration
             'limit' => 100,
             'null' => false,
         ]);
+        $table->addColumn('quantity', 'integer', [
+            'limit' => 100,
+            'null' => false,
+        ]);
         $table->addColumn('create_at', 'datetime', [
             'default' => 'CURRENT_TIMESTAMP',
             'null' => true,

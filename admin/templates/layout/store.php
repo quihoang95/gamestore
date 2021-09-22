@@ -67,6 +67,8 @@ $cakeDescription = "Future's Store";
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/e0ca5eb682.js" crossorigin="anonymous"></script>
     <?= $this->Html->css(['bootstrap.min','style','responsive']) ?>
 
     <?= $this->fetch('meta') ?>
@@ -75,9 +77,8 @@ $cakeDescription = "Future's Store";
 </head>
 <body>
     <header>
-        <?php if($this->Url->build('/Stores')){?>
+      
     <?= $this->element('header')?>
-    <?php }?>
     </header>
     <main class="main">
         <div class="container">

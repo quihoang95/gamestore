@@ -30,6 +30,9 @@ class Orders extends AbstractMigration
             'limit' => 255,
             'null' => false,
         ]);
+        $table->addColumn('message', 'text', [
+            'null' => false,
+        ]);
         $table->addColumn('status', 'integer', [
             'null' => false,
         ]);

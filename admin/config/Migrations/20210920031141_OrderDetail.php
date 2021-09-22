@@ -21,6 +21,12 @@ class OrderDetail extends AbstractMigration
         $table->addColumn('orderId', 'integer', [
             'null' => false,
         ]);
+        $table->addColumn('quantity', 'integer', [
+            'null' => false,
+        ]);
+        $table->addColumn('price', 'string', [
+            'null' => false,
+        ]);
         $table->addColumn('create_at', 'datetime', [
             'default' => 'CURRENT_TIMESTAMP',
             'null' => true,

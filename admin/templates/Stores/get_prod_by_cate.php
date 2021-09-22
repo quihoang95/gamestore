@@ -6,12 +6,12 @@
                  <div class="titlepage">
                      <h2>Our Games</h2>
                  </div>
-                 <!-- <div class="col-md-12">
+                 <div class="col-md-12">
                  <label for=""><h3>Cateogry:</h3></label>
                      <select name="" id="">
                          <option value="">Action</option>
                      </select>
-                 </div> -->
+                 </div>
              </div>
          </div>
          <div class="row">
@@ -25,7 +25,7 @@
                              <div class="Games mt-5">
                                  <h3><?= h($product['name']) ?></h3>
                                  <h2><b>Price:</b> <?= h(number_format($product['price'],2) . '$')?></h2>
-                                 <?= $this->Html->link(__('View Detail'), ['action' => 'detail', $product->id], ['class' => 'mt-3']) ?>
+                                 <a class="mt-3" href="#">View Detail</a>
                              </div>
 
                          </div>
