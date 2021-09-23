@@ -23,6 +23,7 @@
 
 use Cake\Http\Middleware\CsrfProtectionMiddleware;
 use Cake\Routing\Route\DashedRoute;
+use Cake\Routing\Route\Route;
 use Cake\Routing\RouteBuilder;
 
 /*
@@ -57,18 +58,33 @@ $routes->scope('/', function (RouteBuilder $builder) {
     $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
 
     //Admin
+    $builder->prefix('Admin', function(RouteBuilder $builder) {
 
-    $builder->connect('/users',['controller' => 'Users', 'action' => 'index', 'index']);
-    $builder->connect('/users/add', ['controller' => 'Users', 'action' => 'add']);
-    $builder->connect('/users/edit/:id', ['controller' => 'Users', 'action' => 'edit'], ['pass' => ["id"]]);
-    $builder->connect('/users/delete/:id', ['controller' => 'Users', 'action' => 'delete'], ['pass' => ["id"]]);
+        //User
+        $builder->connect('/users',['controller' => 'Users', 'action' => 'index', 'index']);
+        $builder->connect('/users/add', ['controller' => 'Users', 'action' => 'add']);
+        $builder->connect('/users/edit/:id', ['controller' => 'Users', 'action' => 'edit'], ['pass' => ["id"]]);
+        $builder->connect('/users/delete/:id', ['controller' => 'Users', 'action' => 'delete'], ['pass' => ["id"]]);
+
+        //Products
+        $builder->connect('/Products',['controller' => 'Products', 'action' => 'index', 'index']);
+        $builder->connect('/Products/add', ['controller' => 'Products', 'action' => 'add']);
+        $builder->connect('/Products/view/:id', ['controller' => 'Products', 'action' => 'view'], ['pass' => ["id"]]);
+        $builder->connect('/Products/edit/:id', ['controller' => 'Products', 'action' => 'edit'], ['pass' => ["id"]]);
+        $builder->connect('/Products/delete/:id', ['controller' => 'Products', 'action' => 'delete'], ['pass' => ["id"]]);
+        $builder->fallbacks(DashedRoute::class);
+    });
+   
 
     //Store
     $builder->connect('/stores', ['controller' => 'Stores', 'action' => 'index']);
     $builder->connect('/stores/detail',['controller' => 'Stores', 'action' =>'detail']);
-    $builder->connect('/stores/cart',['controller' => 'Carts', 'action' =>'add']);
     $builder->connect('/stores/confirm',['controller' => 'Stores', 'action' =>'confirm']);
     $builder->connect('/stores/category',['controller' => 'Stores', 'action' =>'getProdByCate']);
+    
+    //Cart
+    $builder->connect('/carts',['controller' => 'Carts', 'action' =>'index']);
+    $builder->connect('/carts/add',['controller' => 'Carts', 'action' =>'add']);
 
 
 

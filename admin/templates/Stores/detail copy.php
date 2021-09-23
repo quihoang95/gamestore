@@ -34,11 +34,10 @@
                                         'action' => 'add'
                                     ]
                                 ]); ?>
-                            <?= $this->Form->input('quantity')?>
+                             <?= $this->Form->input('quantity') ?>
                              <?= $this->Form->hidden('product_id', ['value' => $product['id']]) ?>
-                             <?= $this->Form->button('Add to cart', ['type' => 'submit', 'class' => 'add-to-cart','id'=> $product['id']]); ?>
-
-                            <?= $this->Form->end(); ?>
+                             <?= $this->Form->button('Add to cart', ['type' => 'submit', 'id' => 'add-to-cart']); ?>
+                             <?= $this->Form->end(); ?>
                          </div>
                      </div>
                  </div>
@@ -46,21 +45,5 @@
          </div>
      </div>
  </div>
-
- <!-- <script>
-        $('#add-to-cart').on('click', function(e) {
-         e.preventDefault();
-            var id = $(this).attr('id');
-            $.ajax({
-                url: '/detail/add',
-                type: 'post',
-                data: id,
-                success: function (data) {
-                    console.log(JSON.parse);
-                }
-            })
-        });
-   
- </script> -->
 
  <!-- end our -->

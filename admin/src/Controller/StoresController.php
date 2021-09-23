@@ -17,19 +17,19 @@ class StoresController extends AppController
 {
   public function beforeFilter(EventInterface $event)
   {
-    $this->loadComponent('Stores');
+    $this->loadComponent('Products');
   }
 
   public function index()
   {
-    $products = $this->{'Stores'}->getAllProd();
+    $products = $this->{'Products'}->getAllProd();
     $this->set(compact('products'));
     $this->viewBuilder()->setLayout('store');
   }
 
   public function detail($id = null)
   {
-    $product = $this->{'Stores'}->findById($id);
+    $product = $this->{'Products'}->findById($id);
     $this->set(compact('product'));
     $this->viewBuilder()->setLayout('store');
   }
@@ -48,7 +48,7 @@ class StoresController extends AppController
   public function getProdByCate($id)
   {
 
-    $products = $this->{'Stores'}->getProdByCate();
+    $products = $this->{'Products'}->getProdByCate();
     $this->set(compact('products'));
     $this->viewBuilder()->setLayout('store');
   }

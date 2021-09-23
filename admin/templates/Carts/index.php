@@ -23,12 +23,14 @@
                      </thead>
                      <tbody>
                          <tr>
+                             <?php foreach ($products as $key => $product) {?>
                              <td>1</td>
                              <td><?= $this->Html->image('our-image1.jpg', ['style' => 'width:100px;']) ?></td>
                              <td>Angry Bird</td>
                              <td><span class="btn btn-primary mr-3">-</span>3<span class="btn btn-primary ml-3">+</span></td>
                              <td>60</td>
                              <td><a href="" class="btn btn-secondary">Delete</a></td>
+                             <?php }?>
                          </tr>
                      </tbody>
                  </table>
